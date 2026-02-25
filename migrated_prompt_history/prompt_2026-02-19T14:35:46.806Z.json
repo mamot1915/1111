@@ -1,0 +1,207 @@
+[
+  {
+    "id": 0,
+    "author": "user",
+    "payload": {
+      "type": "text",
+      "text": "یک قالب سایت دقیق مثل سایت فیلیمو بساز با جزئیات ",
+      "files": [],
+      "fileUploads": [],
+      "cMarkNode": {}
+    },
+    "createdTimestamp": {
+      "seconds": 1771511681,
+      "nanos": 222000000
+    }
+  },
+  {
+    "id": 1,
+    "author": "model",
+    "payload": {
+      "type": "thinking",
+      "text": "**Defining the React Replica**\n\nI'm now fully immersed in the Filimo website template replica project. I'm focusing on React, Tailwind CSS, and TypeScript for the frontend, ensuring the user interface is pixel-perfect and responsive. I'm setting up the foundation to integrate Gemini API for AI-powered features, aiming for robust and scalable implementations.\n\n\n**Outlining the UI Structure**\n\nI'm currently delineating the key UI components and file structure for the Filimo replica. I've designed the hero section banner, the sticky navigation, the rows of content and movie cards, and filters. Now, I'm setting up metadata, HTML, and TypeScript entry points with the intention to establish a robust foundation. I'm focusing on the dark theme visuals with brand color accents.\n\n\n",
+      "cMarkNode": {}
+    },
+    "createdTimestamp": {
+      "seconds": 1771511681,
+      "nanos": 222000000
+    },
+    "doneTimestamp": {
+      "seconds": 1771511689,
+      "nanos": 587000000
+    }
+  },
+  {
+    "id": 2,
+    "author": "model",
+    "payload": {
+      "type": "generationTable",
+      "entries": [
+        {
+          "path": "metadata.json",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Project metadata with name and description of the Filimo-style VOD application.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\n{\n  \"name\": \"Filimo Clone Pro\",\n  \"description\": \"A high-fidelity VOD platform template inspired by Filimo, featuring AI-powered movie recommendations, cinematic hero sliders, and a responsive dark-themed UI with RTL support.\"\n}\n"
+            }
+          ]
+        },
+        {
+          "path": "index.html",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Main HTML file with Tailwind CSS and Vazirmatn font for Persian typography.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\n<!DOCTYPE html>\n<html lang=\"fa\" dir=\"rtl\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>فیلیمو - تماشای آنلاین فیلم و سریال</title>\n    <script src=\"https://cdn.tailwindcss.com\"></script>\n    <link href=\"https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css\" rel=\"stylesheet\" type=\"text/css\" />\n    <style>\n      body {\n        font-family: 'Vazirmatn', sans-serif;\n        background-color: #121212;\n        color: #ffffff;\n      }\n      ::-webkit-scrollbar {\n        width: 8px;\n        height: 8px;\n      }\n      ::-webkit-scrollbar-track {\n        background: #1a1a1a;\n      }\n      ::-webkit-scrollbar-thumb {\n        background: #333;\n        border-radius: 10px;\n      }\n      ::-webkit-scrollbar-thumb:hover {\n        background: #f5ad02;\n      }\n    </style>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+            }
+          ]
+        },
+        {
+          "path": "index.tsx",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Application entry point using React 18 createRoot.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\nimport React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport App from './App';\n\nconst rootElement = document.getElementById('root');\nif (!rootElement) {\n  throw new Error(\"Could not find root element to mount to\");\n}\n\nconst root = ReactDOM.createRoot(rootElement);\nroot.render(\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>\n);\n"
+            }
+          ]
+        },
+        {
+          "path": "types.ts",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Global TypeScript interfaces for movie data and application state.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\nexport interface Movie {\n  id: string;\n  title: string;\n  description: string;\n  posterUrl: string;\n  backdropUrl: string;\n  rating: number;\n  year: number;\n  genre: string[];\n  isExlcusive?: boolean;\n}\n\nexport interface RecommendationRequest {\n  mood: string;\n  genre?: string;\n}\n"
+            }
+          ]
+        },
+        {
+          "path": "constants.tsx",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Mock data and configuration constants.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\nimport { Movie } from './types';\n\nexport const MOCK_MOVIES: Movie[] = [\n  {\n    id: '1',\n    title: 'زخم کاری: بازگشت',\n    description: 'پس از مرگ مالک، فرزندش میثم برای انتقام باز می‌گردد...',\n    posterUrl: 'https://picsum.photos/seed/movie1/400/600',\n    backdropUrl: 'https://picsum.photos/seed/bg1/1920/1080',\n    rating: 9.2,\n    year: 1402,\n    genre: ['درام', 'جنایی'],\n    isExlcusive: true\n  },\n  {\n    id: '2',\n    title: 'فسیل',\n    description: 'داستان سه دوست صمیمی در دهه پنجاه که زندگی‌شان با تغییراتی روبرو می‌شود.',\n    posterUrl: 'https://picsum.photos/seed/movie2/400/600',\n    backdropUrl: 'https://picsum.photos/seed/bg2/1920/1080',\n    rating: 8.5,\n    year: 1401,\n    genre: ['کمدی', 'خانوادگی']\n  },\n  {\n    id: '3',\n    title: 'رهایم کن',\n    description: 'عشقی عمیق در دل یک روستای دورافتاده...',\n    posterUrl: 'https://picsum.photos/seed/movie3/400/600',\n    backdropUrl: 'https://picsum.photos/seed/bg3/1920/1080',\n    rating: 8.9,\n    year: 1401,\n    genre: ['درام', 'عاشقانه'],\n    isExlcusive: true\n  },\n  {\n    id: '4',\n    title: 'پوست شیر',\n    description: 'نعیم پس از ۱۵ سال از زندان آزاد می‌شود و به دنبال دخترش می‌گردد.',\n    posterUrl: 'https://picsum.photos/seed/movie4/400/600',\n    backdropUrl: 'https://picsum.photos/seed/bg4/1920/1080',\n    rating: 9.8,\n    year: 1401,\n    genre: ['جنایی', 'معمایی'],\n    isExlcusive: true\n  },\n  {\n    id: '5',\n    title: 'ملاقات خصوصی',\n    description: 'عشقی ناممکن که در پشت دیوارهای بلند زندان شکل می‌گیرد.',\n    posterUrl: 'https://picsum.photos/seed/movie5/400/600',\n    backdropUrl: 'https://picsum.photos/seed/bg5/1920/1080',\n    rating: 8.7,\n    year: 1400,\n    genre: ['درام', 'عاشقانه']\n  },\n  {\n    id: '6',\n    title: 'آکتور',\n    description: 'داستان دو بازیگر که برای گذران زندگی، نقش‌های متفاوتی در دنیای واقعی بازی می‌کنند.',\n    posterUrl: 'https://picsum.photos/seed/movie6/400/600',\n    backdropUrl: 'https://picsum.photos/seed/bg6/1920/1080',\n    rating: 9.1,\n    year: 1401,\n    genre: ['درام'],\n    isExlcusive: true\n  }\n];\n\nexport const GENRES = [\n  'اکشن', 'کمدی', 'درام', 'وحشت', 'جنایی', 'خانوادگی', 'عاشقانه', 'انیمیشن'\n];\n"
+            }
+          ]
+        },
+        {
+          "path": "services/geminiService.ts",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Service for AI movie recommendations and smart search.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\nimport { GoogleGenAI, Type } from \"@google/genai\";\n\nconst ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });\n\nexport const getAIRecommendations = async (mood: string) => {\n  try {\n    const response = await ai.models.generateContent({\n      model: \"gemini-3-flash-preview\",\n      contents: `کاربر در حال حاضر احساس ${mood} دارد. بر اساس این مود، ۳ ژانر فیلم مناسب پیشنهاد بده و برای هر کدام یک دلیل کوتاه بیاور. پاسخ را فقط به صورت JSON فارسی برگردان.`,\n      config: {\n        responseMimeType: \"application/json\",\n        responseSchema: {\n          type: Type.OBJECT,\n          properties: {\n            recommendations: {\n              type: Type.ARRAY,\n              items: {\n                type: Type.OBJECT,\n                properties: {\n                  genre: { type: Type.STRING },\n                  reason: { type: Type.STRING }\n                },\n                required: [\"genre\", \"reason\"]\n              }\n            }\n          }\n        }\n      }\n    });\n\n    return JSON.parse(response.text);\n  } catch (error) {\n    console.error(\"Gemini Error:\", error);\n    return null;\n  }\n};\n\nexport const searchMoviesAI = async (query: string) => {\n  try {\n    const response = await ai.models.generateContent({\n      model: \"gemini-3-flash-preview\",\n      contents: `جستجوی کاربر: \"${query}\". بر اساس این جستجو، یک تحلیل کوتاه از اینکه کاربر دنبال چه نوع محتوایی است به فارسی بده.`,\n    });\n    return response.text;\n  } catch (error) {\n    return \"در حال حاضر امکان جستجوی هوشمند وجود ندارد.\";\n  }\n};\n"
+            }
+          ]
+        },
+        {
+          "path": "components/Navbar.tsx",
+          "generationType": 0,
+          "isDone": true,
+          "description": "A sticky navigation bar with search and user actions.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\nimport React, { useState } from 'react';\n\nconst Navbar: React.FC = () => {\n  const [scrolled, setScrolled] = useState(false);\n\n  React.useEffect(() => {\n    const handleScroll = () => {\n      setScrolled(window.scrollY > 50);\n    };\n    window.addEventListener('scroll', handleScroll);\n    return () => window.removeEventListener('scroll', handleScroll);\n  }, []);\n\n  return (\n    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#121212] shadow-lg' : 'bg-transparent'}`}>\n      <div className=\"container mx-auto px-4 py-3 flex items-center justify-between\">\n        <div className=\"flex items-center gap-8\">\n          <div className=\"flex items-center\">\n            <div className=\"bg-[#f5ad02] text-black font-bold text-2xl px-3 py-1 rounded-lg\">FILIMO</div>\n          </div>\n          <ul className=\"hidden md:flex items-center gap-6 text-sm font-medium\">\n            <li className=\"hover:text-[#f5ad02] cursor-pointer transition-colors border-l pl-6 border-white/10\">فیلیموتور</li>\n            <li className=\"hover:text-[#f5ad02] cursor-pointer transition-colors\">سریال</li>\n            <li className=\"hover:text-[#f5ad02] cursor-pointer transition-colors\">فیلم</li>\n            <li className=\"hover:text-[#f5ad02] cursor-pointer transition-colors\">کودک</li>\n            <li className=\"hover:text-[#f5ad02] cursor-pointer transition-colors flex items-center gap-1\">\n              <span>دسته‌بندی</span>\n              <svg className=\"w-4 h-4\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth=\"2\" d=\"M19 9l-7 7-7-7\" /></svg>\n            </li>\n          </ul>\n        </div>\n\n        <div className=\"flex items-center gap-4\">\n          <div className=\"relative hidden md:block group\">\n            <input \n              type=\"text\" \n              placeholder=\"جستجوی فیلم، سریال، بازیگر...\" \n              className=\"bg-white/10 border-none rounded-full py-2 px-10 text-sm focus:bg-white/20 transition-all outline-none w-64 group-hover:w-80\"\n            />\n            <svg className=\"w-5 h-5 absolute right-3 top-2.5 text-white/50\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth=\"2\" d=\"M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z\" /></svg>\n          </div>\n          \n          <button className=\"bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg text-sm transition-colors hidden sm:block\">خرید اشتراک</button>\n          <button className=\"bg-[#1cb561] hover:bg-[#18a055] text-white px-6 py-2 rounded-lg text-sm font-bold transition-colors\">ورود</button>\n        </div>\n      </div>\n    </nav>\n  );\n};\n\nexport default Navbar;\n"
+            }
+          ]
+        },
+        {
+          "path": "components/Hero.tsx",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Cinematic hero section with a backdrop and movie details.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\nimport React from 'react';\nimport { Movie } from '../types';\n\ninterface HeroProps {\n  movie: Movie;\n}\n\nconst Hero: React.FC<HeroProps> = ({ movie }) => {\n  return (\n    <div className=\"relative h-[85vh] w-full overflow-hidden\">\n      <div className=\"absolute inset-0\">\n        <img \n          src={movie.backdropUrl} \n          alt={movie.title}\n          className=\"w-full h-full object-cover\"\n        />\n        <div className=\"absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/40 to-transparent\"></div>\n        <div className=\"absolute inset-0 bg-gradient-to-r from-[#121212] via-transparent to-transparent\"></div>\n      </div>\n      \n      <div className=\"relative container mx-auto px-4 h-full flex flex-col justify-end pb-24 max-w-2xl lg:max-w-4xl mr-0 md:mr-10\">\n        {movie.isExlcusive && (\n          <span className=\"bg-[#f5ad02] text-black text-[10px] font-bold px-2 py-0.5 rounded w-fit mb-4\">اختصاصی فیلیمو</span>\n        )}\n        <h1 className=\"text-4xl md:text-6xl font-black mb-6 drop-shadow-lg\">{movie.title}</h1>\n        <p className=\"text-white/80 text-lg mb-8 line-clamp-2 leading-relaxed max-w-xl\">\n          {movie.description}\n        </p>\n        \n        <div className=\"flex items-center gap-4 flex-wrap\">\n          <button className=\"bg-[#f5ad02] hover:bg-[#e09e02] text-black px-8 py-3 rounded-xl font-bold flex items-center gap-2 transition-all transform hover:scale-105\">\n            <svg className=\"w-6 h-6\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path fillRule=\"evenodd\" d=\"M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z\" clipRule=\"evenodd\" /></svg>\n            تماشا کنید\n          </button>\n          <button className=\"bg-white/10 hover:bg-white/20 backdrop-blur-md px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all\">\n            <svg className=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth=\"2\" d=\"M12 4v16m8-8H4\" /></svg>\n            لیست من\n          </button>\n          <div className=\"flex items-center gap-2 bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm\">\n            <span className=\"text-[#f5ad02] font-bold\">{movie.rating}</span>\n            <span className=\"text-white/40 text-sm\">|</span>\n            <span className=\"text-white/60 text-sm\">{movie.year}</span>\n          </div>\n        </div>\n\n        <div className=\"mt-8 flex gap-2\">\n          {movie.genre.map(g => (\n            <span key={g} className=\"text-white/50 text-sm hover:text-white cursor-pointer\">{g}</span>\n          ))}\n        </div>\n      </div>\n    </div>\n  );\n};\n\nexport default Hero;\n"
+            }
+          ]
+        },
+        {
+          "path": "components/MovieCard.tsx",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Movie poster card with hover effects and rating.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\nimport React from 'react';\nimport { Movie } from '../types';\n\ninterface MovieCardProps {\n  movie: Movie;\n}\n\nconst MovieCard: React.FC<MovieCardProps> = ({ movie }) => {\n  return (\n    <div className=\"relative group cursor-pointer transition-all duration-300 min-w-[160px] md:min-w-[200px] hover:z-10\">\n      <div className=\"relative aspect-[2/3] overflow-hidden rounded-xl\">\n        <img \n          src={movie.posterUrl} \n          alt={movie.title} \n          className=\"w-full h-full object-cover transition-transform duration-500 group-hover:scale-110\"\n        />\n        {/* Hover Overlay */}\n        <div className=\"absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4\">\n          <div className=\"flex items-center gap-1 mb-2\">\n            <svg className=\"w-4 h-4 text-[#f5ad02]\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path d=\"M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z\" /></svg>\n            <span className=\"text-sm font-bold\">{movie.rating}</span>\n          </div>\n          <p className=\"text-xs text-white/70 line-clamp-2 mb-3\">{movie.description}</p>\n          <button className=\"bg-[#f5ad02] text-black text-xs font-bold py-1.5 rounded-lg\">مشاهده جزئیات</button>\n        </div>\n      </div>\n      \n      <div className=\"mt-3\">\n        <h3 className=\"text-sm font-bold truncate group-hover:text-[#f5ad02] transition-colors\">{movie.title}</h3>\n        <p className=\"text-xs text-white/40 mt-1\">{movie.year}</p>\n      </div>\n      \n      {movie.isExlcusive && (\n        <div className=\"absolute top-2 left-2 bg-[#f5ad02] text-black text-[8px] font-bold px-1.5 py-0.5 rounded shadow-lg\">اختصاصی</div>\n      )}\n    </div>\n  );\n};\n\nexport default MovieCard;\n"
+            }
+          ]
+        },
+        {
+          "path": "components/MovieRow.tsx",
+          "generationType": 0,
+          "isDone": true,
+          "description": "A horizontal scrolling row of movie cards.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\nimport React, { useRef } from 'react';\nimport { Movie } from '../types';\nimport MovieCard from './MovieCard';\n\ninterface MovieRowProps {\n  title: string;\n  movies: Movie[];\n}\n\nconst MovieRow: React.FC<MovieRowProps> = ({ title, movies }) => {\n  const rowRef = useRef<HTMLDivElement>(null);\n\n  const scroll = (direction: 'left' | 'right') => {\n    if (rowRef.current) {\n      const { scrollLeft, clientWidth } = rowRef.current;\n      const scrollTo = direction === 'left' ? scrollLeft - clientWidth : scrollLeft + clientWidth;\n      rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });\n    }\n  };\n\n  return (\n    <div className=\"py-8 group/row\">\n      <div className=\"container mx-auto px-4 flex items-center justify-between mb-4\">\n        <h2 className=\"text-xl font-bold border-r-4 border-[#f5ad02] pr-3\">{title}</h2>\n        <a href=\"#\" className=\"text-sm text-[#f5ad02] hover:underline\">مشاهده همه</a>\n      </div>\n      \n      <div className=\"relative\">\n        {/* Scroll Buttons */}\n        <button \n          onClick={() => scroll('left')}\n          className=\"absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-black/60 p-2 rounded-r-full opacity-0 group-hover/row:opacity-100 transition-opacity hidden md:block\"\n        >\n          <svg className=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth=\"2\" d=\"M15 19l-7-7 7-7\" /></svg>\n        </button>\n        <button \n          onClick={() => scroll('right')}\n          className=\"absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-black/60 p-2 rounded-l-full opacity-0 group-hover/row:opacity-100 transition-opacity hidden md:block\"\n        >\n          <svg className=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth=\"2\" d=\"M9 5l7 7-7 7\" /></svg>\n        </button>\n\n        <div \n          ref={rowRef}\n          className=\"flex gap-4 overflow-x-auto px-4 scrollbar-hide scroll-smooth no-scrollbar\"\n          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}\n        >\n          {movies.map(movie => (\n            <MovieCard key={movie.id} movie={movie} />\n          ))}\n        </div>\n      </div>\n    </div>\n  );\n};\n\nexport default MovieRow;\n"
+            }
+          ]
+        },
+        {
+          "path": "components/AIRecommender.tsx",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Interactive section powered by Gemini API for personalized recommendations.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\nimport React, { useState } from 'react';\nimport { getAIRecommendations } from '../services/geminiService';\n\nconst AIRecommender: React.FC = () => {\n  const [mood, setMood] = useState('');\n  const [results, setResults] = useState<any>(null);\n  const [loading, setLoading] = useState(false);\n\n  const moods = [\n    { label: 'خسته', value: 'tired' },\n    { label: 'شاد', value: 'happy' },\n    { label: 'عاشقانه', value: 'romantic' },\n    { label: 'هیجان‌زده', value: 'excited' },\n    { label: 'غمگین', value: 'sad' },\n  ];\n\n  const handleRecommend = async (moodLabel: string) => {\n    setLoading(true);\n    setMood(moodLabel);\n    const data = await getAIRecommendations(moodLabel);\n    setResults(data);\n    setLoading(false);\n  };\n\n  return (\n    <div className=\"bg-gradient-to-r from-[#1a1a1a] to-[#252525] rounded-3xl p-8 my-12 container mx-auto px-4 border border-white/5\">\n      <div className=\"flex flex-col md:flex-row items-center gap-8\">\n        <div className=\"flex-1\">\n          <h2 className=\"text-2xl font-black mb-4 flex items-center gap-3\">\n            <span className=\"bg-[#f5ad02] p-2 rounded-xl\">🤖</span>\n            پیشنهاد هوشمند فیلیمو\n          </h2>\n          <p className=\"text-white/60 mb-6\">امروز چه حسی داری؟ بگو تا با هوش مصنوعی جمینای بهت بگیم چی ببینی.</p>\n          \n          <div className=\"flex flex-wrap gap-3 mb-6\">\n            {moods.map((m) => (\n              <button\n                key={m.value}\n                onClick={() => handleRecommend(m.label)}\n                className={`px-6 py-2 rounded-full border transition-all ${\n                  mood === m.label \n                    ? 'bg-[#f5ad02] border-[#f5ad02] text-black font-bold' \n                    : 'border-white/20 hover:border-[#f5ad02] hover:text-[#f5ad02]'\n                }`}\n              >\n                {m.label}\n              </button>\n            ))}\n          </div>\n\n          {loading && <div className=\"animate-pulse text-[#f5ad02]\">در حال تحلیل سلیقه شما توسط هوش مصنوعی...</div>}\n\n          {results && !loading && (\n            <div className=\"grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 animate-fadeIn\">\n              {results.recommendations.map((rec: any, idx: number) => (\n                <div key={idx} className=\"bg-white/5 p-4 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors\">\n                  <div className=\"text-[#f5ad02] font-bold text-lg mb-2\">{rec.genre}</div>\n                  <p className=\"text-xs text-white/60 leading-relaxed\">{rec.reason}</p>\n                </div>\n              ))}\n            </div>\n          )}\n        </div>\n        \n        <div className=\"hidden lg:block w-1/3\">\n          <img src=\"https://picsum.photos/seed/ai-bot/600/400\" className=\"rounded-2xl opacity-50 grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl\" alt=\"AI\" />\n        </div>\n      </div>\n    </div>\n  );\n};\n\nexport default AIRecommender;\n"
+            }
+          ]
+        },
+        {
+          "path": "components/Footer.tsx",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Comprehensive footer with site information and links.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\nimport React from 'react';\n\nconst Footer: React.FC = () => {\n  return (\n    <footer className=\"bg-[#121212] border-t border-white/5 pt-16 pb-8\">\n      <div className=\"container mx-auto px-4\">\n        <div className=\"grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-16\">\n          <div className=\"col-span-2\">\n            <div className=\"text-[#f5ad02] font-black text-3xl mb-6\">FILIMO</div>\n            <p className=\"text-white/40 text-sm leading-7 mb-8\">\n              فیلیمو مرجع تماشای آنلاین فیلم و سریال با بیش از ۹۰ هزار عنوان ایرانی و خارجی. همین حالا اشتراک بخرید و از تماشای بی‌وقفه لذت ببرید.\n            </p>\n            <div className=\"flex gap-4\">\n              {['Twitter', 'Instagram', 'LinkedIn', 'Telegram'].map(social => (\n                <div key={social} className=\"w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#f5ad02] hover:text-black cursor-pointer transition-all\">\n                  <span className=\"text-[10px]\">{social[0]}</span>\n                </div>\n              ))}\n            </div>\n          </div>\n          \n          <div>\n            <h4 className=\"font-bold mb-6 text-white/80\">فیلیمو</h4>\n            <ul className=\"space-y-4 text-sm text-white/40\">\n              <li className=\"hover:text-white cursor-pointer\">درباره ما</li>\n              <li className=\"hover:text-white cursor-pointer\">تماس با ما</li>\n              <li className=\"hover:text-white cursor-pointer\">قوانین</li>\n              <li className=\"hover:text-white cursor-pointer\">سوالات متداول</li>\n            </ul>\n          </div>\n\n          <div>\n            <h4 className=\"font-bold mb-6 text-white/80\">خدمات</h4>\n            <ul className=\"space-y-4 text-sm text-white/40\">\n              <li className=\"hover:text-white cursor-pointer\">خرید اشتراک</li>\n              <li className=\"hover:text-white cursor-pointer\">کد هدیه</li>\n              <li className=\"hover:text-white cursor-pointer\">فیلیمو مدرسه</li>\n              <li className=\"hover:text-white cursor-pointer\">فیلیمو تور</li>\n            </ul>\n          </div>\n\n          <div className=\"hidden lg:block\">\n            <h4 className=\"font-bold mb-6 text-white/80\">دانلود اپلیکیشن</h4>\n            <div className=\"space-y-3\">\n              <div className=\"bg-white/5 p-3 rounded-xl border border-white/10 hover:bg-white/10 cursor-pointer flex items-center gap-3\">\n                <div className=\"w-8 h-8 bg-[#f5ad02] rounded-lg\"></div>\n                <div className=\"text-xs\">دریافت از بازار</div>\n              </div>\n              <div className=\"bg-white/5 p-3 rounded-xl border border-white/10 hover:bg-white/10 cursor-pointer flex items-center gap-3\">\n                <div className=\"w-8 h-8 bg-blue-500 rounded-lg\"></div>\n                <div className=\"text-xs\">دریافت از گوگل پلی</div>\n              </div>\n            </div>\n          </div>\n        </div>\n        \n        <div className=\"border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-white/30 gap-4\">\n          <p>© تمامی حقوق برای فیلیمو محفوظ است - ۱۴۰۳</p>\n          <div className=\"flex gap-6\">\n            <span>شرایط و ضوابط</span>\n            <span>حریم خصوصی</span>\n          </div>\n        </div>\n      </div>\n    </footer>\n  );\n};\n\nexport default Footer;\n"
+            }
+          ]
+        },
+        {
+          "path": "App.tsx",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Main application component assembling the template.",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "\nimport React from 'react';\nimport Navbar from './components/Navbar';\nimport Hero from './components/Hero';\nimport MovieRow from './components/MovieRow';\nimport AIRecommender from './components/AIRecommender';\nimport Footer from './components/Footer';\nimport { MOCK_MOVIES, GENRES } from './constants';\n\nconst App: React.FC = () => {\n  return (\n    <div className=\"min-h-screen bg-[#121212] overflow-x-hidden\">\n      <Navbar />\n      \n      <main>\n        {/* Top Hero Section */}\n        <Hero movie={MOCK_MOVIES[0]} />\n        \n        {/* Main Content Rows */}\n        <div className=\"-mt-16 relative z-30\">\n          <MovieRow title=\"ویژه فیلیمو\" movies={[...MOCK_MOVIES].reverse()} />\n          <MovieRow title=\"سریال‌های پربازدید\" movies={MOCK_MOVIES} />\n          \n          {/* AI Feature Section */}\n          <AIRecommender />\n          \n          <MovieRow title=\"برترین‌های کمدی\" movies={MOCK_MOVIES.filter(m => m.genre.includes('کمدی'))} />\n          \n          {/* Genre Filters Section */}\n          <section className=\"container mx-auto px-4 py-12\">\n            <h2 className=\"text-xl font-bold mb-6 border-r-4 border-[#f5ad02] pr-3\">دسته‌بندی‌های محبوب</h2>\n            <div className=\"grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4\">\n              {GENRES.map(genre => (\n                <div \n                  key={genre}\n                  className=\"bg-white/5 hover:bg-[#f5ad02] hover:text-black transition-all cursor-pointer p-6 rounded-2xl text-center font-bold border border-white/5\"\n                >\n                  {genre}\n                </div>\n              ))}\n            </div>\n          </section>\n\n          <MovieRow title=\"تازه واردها\" movies={[...MOCK_MOVIES].sort(() => Math.random() - 0.5)} />\n          \n          {/* Subscription Banner */}\n          <section className=\"container mx-auto px-4 my-20\">\n            <div className=\"bg-[#f5ad02] rounded-3xl p-10 flex flex-col md:flex-row items-center justify-between text-black relative overflow-hidden\">\n              <div className=\"absolute -right-20 -top-20 w-64 h-64 bg-black/10 rounded-full blur-3xl\"></div>\n              <div className=\"relative z-10\">\n                <h2 className=\"text-3xl font-black mb-4\">تماشای نامحدود هزاران فیلم و سریال</h2>\n                <p className=\"font-medium opacity-80\">با خرید اشتراک، به دنیایی از سرگرمی بدون تبلیغات دسترسی داشته باشید.</p>\n              </div>\n              <button className=\"bg-black text-[#f5ad02] px-10 py-4 rounded-2xl font-black text-xl mt-8 md:mt-0 shadow-2xl hover:scale-105 transition-transform\">\n                خرید اشتراک\n              </button>\n            </div>\n          </section>\n        </div>\n      </main>\n      \n      <Footer />\n    </div>\n  );\n};\n\nexport default App;\n"
+            }
+          ]
+        }
+      ]
+    },
+    "createdTimestamp": {
+      "seconds": 1771511689,
+      "nanos": 590000000
+    },
+    "doneTimestamp": {
+      "seconds": 1771511690,
+      "nanos": 130000000
+    }
+  }
+]
